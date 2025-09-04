@@ -54,17 +54,19 @@ const handleKeyPress = (e: KeyboardEvent) => {
     <>
       <div id="drum-machine">
         <div id="display">{display}</div>
-        {bankOne.map((pad) => (
-          <button
-            key={pad.key}
-            className="drum-pad"
-            id={pad.id}
-            onClick={onDrumPadClick}
-          >
-            {pad.keyTrigger}
-            <audio className="clip" id={pad.keyTrigger} src={pad.url}></audio>
-          </button>
-        ))}
+        <div className="drum-pads-container">
+          {bankOne.map((pad) => (
+            <button
+              key={pad.key}
+              className="drum-pad"
+              id={pad.id}
+              onClick={onDrumPadClick}
+            >
+              {pad.keyTrigger}
+              <audio className="clip" id={pad.keyTrigger} src={pad.url}></audio>
+            </button>
+          ))}
+        </div>
       </div>
     </>
   );
