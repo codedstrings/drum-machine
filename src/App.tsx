@@ -30,7 +30,7 @@ function App() {
   }
 
 const handleKeyPress = (e: KeyboardEvent) => {
-    const pad = bankOne.find(p => p.keyTrigger === e.key.toUpperCase());//i didn't understand e.key.toUpperCase() tho..
+    const pad = bankOne.find(p => p.keyTrigger === e.key.toUpperCase());
     if (pad) {
       const audio = document.getElementById(pad.keyTrigger) as HTMLAudioElement;
       playAudio(audio);
@@ -45,8 +45,6 @@ const handleKeyPress = (e: KeyboardEvent) => {
     }
   }, []);
 
-
-
   const playAudio = (audioElement: HTMLAudioElement) => {
     audioElement.currentTime = 0;
     audioElement.play();
@@ -56,15 +54,20 @@ const handleKeyPress = (e: KeyboardEvent) => {
     <>
       <div id="drum-machine">
         <div id="display">{display}</div>
-         {bankOne.map((pad) => (
-            <button key={pad.key} className="drum-pad" id={pad.id} onClick={onDrumPadClick}>
-              {pad.keyTrigger}
-              <audio className="clip" id={pad.keyTrigger} src={pad.url}></audio>
-            </button>
-          ))}
+        {bankOne.map((pad) => (
+          <button
+            key={pad.key}
+            className="drum-pad"
+            id={pad.id}
+            onClick={onDrumPadClick}
+          >
+            {pad.keyTrigger}
+            <audio className="clip" id={pad.keyTrigger} src={pad.url}></audio>
+          </button>
+        ))}
       </div>
     </>
-  )
+  );
 }
 
 export default App
