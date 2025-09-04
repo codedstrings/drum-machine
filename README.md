@@ -1,69 +1,75 @@
-# React + TypeScript + Vite
+# Drum Machine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React TypeScript drum machine application that plays audio samples using keyboard keys or mouse clicks.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 9 drum pads with unique audio samples
+- Keyboard controls (Q, W, E, A, S, D, Z, X, C)
+- Click-based interaction
+- Real-time display of current playing sound
+- Visual feedback with button animations
+- Responsive design
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The application is automatically deployed to GitHub Pages on every push to the main branch.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**[View Live Demo →](https://github.com/codedstrings/drum-machine.git)**
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+- Node.js
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/codedstrings/drum-machine.git
+
+# Navigate to project directory
+cd drum-machine
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Mouse**: Click any drum pad to play its sound
+- **Keyboard**: Press Q, W, E, A, S, D, Z, X, or C keys to trigger sounds
+- **Display**: Shows the name of the currently playing sound
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- CSS3
+
+## Project Structure
+
 ```
+src/
+├── App.tsx          # Main component
+├── App.css          # Styling
+├── index.css        # Global styles
+└── main.tsx         # Entry point
+```
+
+## Credits
+
+Built as part of the freeCodeCamp Front End Development Libraries certification. Audio samples provided by freeCodeCamp.
+
+## License
+
+This project is open source and available under the MIT License
+
+---
+
+⭐ If you found this project helpful or learned something from the code, please give it a star!
