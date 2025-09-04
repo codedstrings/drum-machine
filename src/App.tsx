@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 type DrumPad = {
   key: number;
@@ -29,14 +29,23 @@ function App() {
     setDisplay(e.currentTarget.id);
   }
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    const pad = bankOne.find(p => p.keyTrigger === e.key.toUpperCase());
+const handleKeyPress = (e: KeyboardEvent) => {
+    const pad = bankOne.find(p => p.keyTrigger === e.key.toUpperCase());//i didn't understand e.key.toUpperCase() tho..
     if (pad) {
       const audio = document.getElementById(pad.keyTrigger) as HTMLAudioElement;
       playAudio(audio);
       setDisplay(pad.id);
     }
   }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    }
+  }, []);
+
+
 
   const playAudio = (audioElement: HTMLAudioElement) => {
     audioElement.currentTime = 0;
@@ -48,7 +57,7 @@ function App() {
       <div id="drum-machine">
         <div id="display">{display}</div>
          {bankOne.map((pad) => (
-            <button key={pad.key} className="drum-pad" id={pad.id} onClick={onDrumPadClick} onKeyDown={onKeyDown}>
+            <button key={pad.key} className="drum-pad" id={pad.id} onClick={onDrumPadClick}>
               {pad.keyTrigger}
               <audio className="clip" id={pad.keyTrigger} src={pad.url}></audio>
             </button>
