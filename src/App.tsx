@@ -21,7 +21,8 @@ const bankOne: DrumPad[] = [
 
 function App() {
 
-  const [display, setDisplay] = useState('');
+  const [display, setDisplay] = useState<string>('');
+  const [activePad, setActivePad] = useState<string>('');
 
   const onDrumPadClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const audio = e.currentTarget.querySelector('audio')!;
@@ -35,6 +36,10 @@ const handleKeyPress = (e: KeyboardEvent) => {
       const audio = document.getElementById(pad.keyTrigger) as HTMLAudioElement;
       playAudio(audio);
       setDisplay(pad.id);
+
+      // Add visual feedback
+      setActivePad(pad.keyTrigger);
+      setTimeout(() => setActivePad(''), 100); // Remove after 100ms
     }
   }
 
@@ -58,7 +63,7 @@ const handleKeyPress = (e: KeyboardEvent) => {
           {bankOne.map((pad) => (
             <button
               key={pad.key}
-              className="drum-pad"
+              className={`drum-pad ${activePad === pad.keyTrigger ? 'active' : ''}`}
               id={pad.id}
               onClick={onDrumPadClick}
             >
